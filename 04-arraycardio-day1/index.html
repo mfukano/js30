@@ -5,7 +5,7 @@
   <title>Array Cardio 💪</title>
 </head>
 <body>
-<p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+  <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
 <script>
   const inventors = [
     { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
@@ -45,33 +45,33 @@
 
   // Array.prototype.map()
   // 2. Give us an array of the inventors' first and last names
-  let iArray = inventors.map(x => x.first + ' ' + x.last);
+  const iArray = inventors.map(x => x.first + ' ' + x.last);
   console.log("\n2.\n")
   console.log(iArray);
 
   // Array.prototype.sort()
   // 3. Sort the inventors by birthdate, oldest to youngest
-  let sort = inventors.sort((x, y) => x.year - y.year)
+  const sort = inventors.sort((x, y) => x.year - y.year)
   console.log("\n3.\n")
   console.table(sort)
   //sort.forEach(x => console.log(x.year + ": " + x.last))
 
   // Array.prototype.reduce()
   // 4. How many years did all the inventors live?
-  let lifeSpans = inventors.reduce((acc, cur) =>
+  const lifeSpans = inventors.reduce((acc, cur) =>
   acc + (cur.passed - cur.year), 0)
   console.log("\n4.\n")
   console.log("accumulated lifespans: "+lifeSpans)
 
   // 5. Sort the inventors by years lived
-  let yearsLived = inventors.map(x => x.passed - x.year)
+  const yearsLived = inventors.map(x => x.passed - x.year)
   .sort((a, b) => b - a)
   console.log("\n5.\n")
   console.log(yearsLived)
 
   // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
   // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-  let lesBoulevards = [
+  const lesBoulevards = [
     "Boulevard Auguste-Blanqui",
     "Boulevard Barbès",
     "Boulevard Beaumarchais",
@@ -99,13 +99,13 @@
     "Boulevard de la Zone"
   ]
 
-  let de = lesBoulevards.filter(x => x.includes('de'))
+  const de = lesBoulevards.filter(x => x.includes('de'))
   console.log("\n6.\n")
   console.log(de)
 
   // 7. sort Exercise
   // Sort the people alphabetically by last name
-  let peeps = people.sort()
+  const peeps = people.sort()
   /* non-simple sort
   .sort((a, b) => {
     const [aF, aL] = a.split(',')
@@ -121,15 +121,13 @@
   // Sum up the instances of each of these
   const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car',
     'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ]
-  let counted = data.reduce((acc, name) => {
+  const counted = data.reduce((acc, name) => {
     (name in acc) ? acc[name]++ : acc[name] = 1
     return acc
   }, [])
   console.log("\n8.\n")
   console.log(counted)
 
-
 </script>
-
 </body>
 </html>
