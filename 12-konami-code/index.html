@@ -7,25 +7,45 @@
     body {
       display: flex;
       justify-content: center;
-      flex-flow: row wrap;
-      flex-basis: 0 1 60vw;
     }
-    h2 {
-      text-align: center;
-      font-family: sans-serif;
-      font-weight: 200;
-      z-index: 100;
+
+    .titles {
+      display: flex;
+      flex: 0 1 80vw;
+      flex-flow: column;
+      justify-content: center;
+      max-width: 80vw;
+    }
+
+    h1,h2,h5 {
       background-color: rgba(255,255,255, 0.7);
       border-radius: 3px;
+      font-family: sans-serif;
+      font-weight: 200;
+      margin: 0;
+      text-align: center;
+      z-index: 100;
+    }
+    h1 {
+      font-weight: 400;
+    }
+    h2 {
+      padding-top: 15px;
+      padding-bottom: 5px;
     }
   </style>
   <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
 </head>
 <body>
+  <div class="titles">
+    <h1 id="main">ENTER THE KONAMI CODE</h1>
+    <h5><em>(pressing space clears the buffer)</em></h5>
+    <h2 id="input"></h2>
+  </div>
 <script>
-  let h2 = document.createElement('h2')
+  let h1 = document.getElementById('main')
+  let h2 = document.getElementById('input')
   h2.textContent = 'Empty!'
-  document.body.appendChild(h2)
   const pressed = []
   const empty = a => a.splice(0, a.length)
   const secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown',
@@ -34,7 +54,8 @@
   window.addEventListener('keyup', e => {
     pressed.push(e.key)
     if (e.key == ' ') empty(pressed)
-    else if (pressed.join(' ') == secretCode.join(' ')) {
+    else if (pressed.join(' ') == secretCode) {
+      h1.textContent = 'KONAMI CODE ACTIVATED'
       cornify_add()
       empty(pressed)
     }
