@@ -46,6 +46,7 @@ function toggleFullScreen() {
       console.log('webkit fullscreen')
       player.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT)
     }
+    player.classList.toggle('full')
   } else {
     if (document.cancelFullScreen) {
       document.cancelFullScreen()
@@ -54,8 +55,8 @@ function toggleFullScreen() {
     } else if (document.webkitCancelFullScreen) {
       document.webkitCancelFullScreen()
     }
+    player.classList.toggle('full')
   }
-  player.classList.toggle('full')
 }
 
 // Hook up the event listeners
