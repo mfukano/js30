@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Cardio 2</title>
+</head>
+<body>
+  <p><em>Psst: LOOK AT THE CONSOLE</em></p>
+  <script>
+  /* Array Cardio
+    <spongebob-voice>Day 2</spongebob-voice>
+  */
+    const people = [
+      { name: 'Mat', year: 1993 },
+      { name: 'Brian', year: 1991 },
+      { name: 'Emily', year: 1996 },
+      { name: 'Caviar', year: 2013 }
+    ]
+
+    const comments = [
+      { text: 'Love this!', id: 523423 },
+      { text: 'Super good', id: 823423 },
+      { text: 'You are the best', id: 2039842 },
+      { text: 'Ramen is my fav food ever', id: 123523 },
+      { text: 'Nice Nice Nice!', id: 542328 }
+    ];
+
+
+    /*  Some and Every Checks
+        Array.prototype.some()   // is at least one person 19?
+        Array.prototype.every()  //  is everyone 19?    */
+    function nineteen(el, idx, arr) {
+      return (new Date()).getFullYear() - el.year) >= 19
+    }
+
+    console.log(`Is someone over 19? :: ${people.some(nineteen)}`)
+    console.log(`Is everyone over 19? :: ${people.every(nineteen)}`)
+
+    /*  Array.prototype.find()
+        Find is like filter but instead returns singleton id
+        Find comment with ID 823423                     */
+
+    const com = comments.find(x => x.id == 823423)
+    console.log(`Comment 823423: ${com.text}`)
+
+    /*  Array.prototype.findIndex()
+        Find the comment with this ID
+        Delete the commend with ID of 823423            */
+    console.log('Before delete: ')
+    console.table(comments)
+    const comIDX = comments.findIndex(x => x.id == 823423)
+    console.log(`Com removed: ${delete comments[comIDX]}`)
+    console.log('After delete: ')
+    console.table(comments)
+
+  </script>
+</body>
+</html>
