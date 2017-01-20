@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection (KONAMI CODE)</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      flex-flow: row wrap;
+      flex-basis: 0 1 60vw;
+    }
+    h2 {
+      text-align: center;
+      font-family: sans-serif;
+      font-weight: 200;
+      z-index: 100;
+      background-color: rgba(255,255,255, 0.7);
+      border-radius: 3px;
+    }
+  </style>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<script>
+  let h2 = document.createElement('h2')
+  h2.textContent = 'Empty!'
+  document.body.appendChild(h2)
+  const pressed = []
+  const empty = a => a.splice(0, a.length)
+  const secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown',
+    'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft',
+    'ArrowRight', 'a', 'b', 'Enter'].join(' ')
+  window.addEventListener('keyup', e => {
+    pressed.push(e.key)
+    if (e.key == ' ') empty(pressed)
+    else if (pressed.join(' ') == secretCode.join(' ')) {
+      cornify_add()
+      empty(pressed)
+    }
+    h2.textContent = (pressed.length > 0) ? pressed.join(', ') : 'Empty!'
+  })
+</script>
+</body>
+</html>
